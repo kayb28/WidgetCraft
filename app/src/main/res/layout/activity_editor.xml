@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:paddingLeft="16dp" android:paddingRight="16dp" android:paddingTop="12dp">
+        <Button android:id="@+id/btn_save"
+            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="@string/save" />
+        <Button android:id="@+id/btn_apply"
+            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:layout_marginStart="8dp" android:text="@string/apply_to_widget" />
+        <Button android:id="@+id/btn_pin"
+            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:layout_marginStart="8dp" android:text="@string/add_to_home" />
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:paddingLeft="16dp" android:paddingRight="16dp"
+            android:paddingBottom="24dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/design_label" android:textSize="14sp" android:textStyle="bold"
+                android:paddingTop="8dp" />
+            <Spinner android:id="@+id/design_spinner"
+                android:layout_width="match_parent" android:layout_height="48dp" />
+
+            <FrameLayout android:id="@+id/preview_host"
+                android:layout_width="match_parent" android:layout_height="200dp"
+                android:layout_marginTop="8dp" android:background="@drawable/preview_bg" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/section_style" android:textSize="14sp" android:textStyle="bold"
+                android:paddingTop="16dp" />
+            <LinearLayout android:id="@+id/style_host"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/section_design" android:textSize="14sp" android:textStyle="bold"
+                android:paddingTop="16dp" />
+            <LinearLayout android:id="@+id/design_host"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

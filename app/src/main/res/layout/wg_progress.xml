@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView android:id="@+id/wg_bg"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:scaleType="fitXY" android:contentDescription="@string/app_name" />
+    <LinearLayout android:id="@+id/progress_root"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical" android:gravity="center_vertical" android:padding="12dp">
+        <LinearLayout android:id="@+id/row_dia"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_marginBottom="4dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:id="@+id/label_dia" android:layout_weight="1"
+                    android:layout_width="0dp" android:layout_height="wrap_content" />
+                <TextView android:id="@+id/pct_dia"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <ProgressBar android:id="@+id/bar_dia"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:progress="50" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/row_mes"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_marginBottom="4dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:id="@+id/label_mes" android:layout_weight="1"
+                    android:layout_width="0dp" android:layout_height="wrap_content" />
+                <TextView android:id="@+id/pct_mes"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <ProgressBar android:id="@+id/bar_mes"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:progress="50" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/row_ano"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:id="@+id/label_ano" android:layout_weight="1"
+                    android:layout_width="0dp" android:layout_height="wrap_content" />
+                <TextView android:id="@+id/pct_ano"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <ProgressBar android:id="@+id/bar_ano"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:progress="50" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@+id/wg_edit"
+        android:layout_width="28dp" android:layout_height="28dp"
+        android:layout_gravity="top|end" android:padding="5dp"
+        android:src="@drawable/ic_gear" android:alpha="0.4"
+        android:contentDescription="@string/editor_title" />
+</FrameLayout>

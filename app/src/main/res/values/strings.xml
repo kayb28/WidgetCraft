@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">WidgetCraft</string>
+    <string name="widget_label">WidgetCraft</string>
+    <string name="widget_description">Widgets de WidgetCraft: elige un diseño y personalízalo</string>
+
+    <!-- Navegación -->
+    <string name="library_title">Mis widgets</string>
+    <string name="catalog_title">Catálogo base</string>
+    <string name="settings">Ajustes</string>
+    <string name="back">Volver</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="delete">Eliminar</string>
+    <string name="delete_confirm">¿Eliminar esta configuración? Los widgets instalados que la usen quedarán sin configurar.</string>
+    <string name="edit">Editar</string>
+    <string name="duplicate">Duplicar</string>
+    <string name="apply_to_widget">Aplicar a widget instalado</string>
+    <string name="add_to_home">Añadir a la pantalla de inicio</string>
+    <string name="empty_library">Aún no tienes widgets guardados.\nCrea el primero desde el catálogo.</string>
+
+    <!-- Editor -->
+    <string name="editor_title">Editor de widget</string>
+    <string name="section_style">Estilo (aplicable a todos los diseños)</string>
+    <string name="section_design">Diseño</string>
+    <string name="style_bg_color">Color de fondo</string>
+    <string name="style_bg_auto">Automático (claro/oscuro)</string>
+    <string name="style_bg_alpha">Opacidad del fondo</string>
+    <string name="style_radius">Esquinas redondeadas</string>
+    <string name="style_text_color">Color del texto</string>
+    <string name="style_text_auto">Automático (contraste)</string>
+    <string name="style_accent">Color de acento</string>
+    <string name="style_text_scale">Tamaño del texto</string>
+    <string name="style_bold">Texto en negrita</string>
+    <string name="saved_to_library">Guardado en Mis widgets</string>
+    <string name="applied_to_widget">Widget actualizado en la pantalla de inicio</string>
+    <string name="pin_requested">Solicitud enviada: confirma en el sistema</string>
+    <string name="no_installed_widgets">No hay widgets de WidgetCraft en tu pantalla de inicio</string>
+    <string name="choose_widget">Elige el widget a actualizar</string>
+    <string name="choose_app">Elige aplicaciones (máximo 4)</string>
+    <string name="pick_datetime">Elegir fecha y hora</string>
+    <string name="design_label">Diseño base</string>
+
+    <!-- Ajustes -->
+    <string name="settings_title">Ajustes</string>
+    <string name="theme_title">Tema</string>
+    <string name="theme_system">Según el sistema</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+    <string name="about_title">Acerca de</string>
+
+    <!-- Diseños -->
+    <string name="d_clock">Reloj digital</string>
+    <string name="d_date">Fecha</string>
+    <string name="d_battery">Batería</string>
+    <string name="d_counter">Contador de toques</string>
+    <string name="d_note">Nota rápida</string>
+    <string name="d_quote">Cita del día</string>
+    <string name="d_countdown">Cuenta atrás</string>
+    <string name="d_progress">Progreso del tiempo</string>
+    <string name="d_timer">Control de tiempo</string>
+    <string name="d_tasks">Lista de tareas</string>
+    <string name="d_device">Estado del dispositivo</string>
+    <string name="d_shortcuts">Accesos directos</string>
+
+    <!-- Etiquetas por defecto de cada diseño -->
+    <string name="def_clock_label">Hora local</string>
+    <string name="def_date_label">Hoy</string>
+    <string name="def_battery_label">Batería</string>
+    <string name="def_counter_label">Toques</string>
+    <string name="def_note_label">Nota</string>
+    <string name="def_quote_hint">Toca para otra cita</string>
+    <string name="def_countdown_label">Cuenta atrás</string>
+    <string name="def_timer_label">Control de tiempo</string>
+    <string name="def_device_label">Dispositivo</string>
+    <string name="def_shortcut_hint">Toca para abrir</string>
+
+    <!-- Estados varios -->
+    <string name="battery_charging">Cargando</string>
+    <string name="timer_running">En curso</string>
+    <string name="timer_stopped">Detenido</string>
+    <string name="timer_zero">Sin registrar</string>
+    <string name="countdown_done">¡Llegó el momento!</string>
+    <string name="placeholder_text">WidgetCraft</string>
+</resources>

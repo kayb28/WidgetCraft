@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="16dp">
+    <TextView android:id="@+id/settings_title"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/settings_title" android:textSize="22sp" android:textStyle="bold" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/theme_title" android:textSize="15sp" android:textStyle="bold"
+        android:paddingTop="20dp" />
+    <RadioGroup android:id="@+id/theme_group"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:paddingTop="8dp">
+        <RadioButton android:id="@+id/theme_system" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/theme_system" />
+        <RadioButton android:id="@+id/theme_light" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/theme_light" />
+        <RadioButton android:id="@+id/theme_dark" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/theme_dark" />
+    </RadioGroup>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/about_title" android:textSize="15sp" android:textStyle="bold"
+        android:paddingTop="24dp" />
+    <TextView android:id="@+id/about_text"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textSize="13sp" android:paddingTop="8dp" android:alpha="0.8" />
+</LinearLayout>
