@@ -74,6 +74,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun designTitle(design: Designs.Design): String {
+        val resId = resources.getIdentifier(design.titleRes, "string", packageName)
+        return if (resId != 0) getString(resId) else design.titleRes
+    }
+
     private fun libraryRow(cfg: org.json.JSONObject): View {
         val d = resources.displayMetrics.density
         val design = Designs.byId(cfg.optString("design", "clock"))
@@ -101,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         root.addView(previewHost)
 
         val name = TextView(this).apply {
-            text = getString(design.titleRes)
+            text = designTitle(design)
             textSize = 15f
             layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply {
                 marginStart = (10 * d).toInt()
@@ -146,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             layoutParams = LinearLayout.LayoutParams((34 * d).toInt(), (34 * d).toInt())
         })
         card.addView(TextView(this).apply {
-            text = getString(design.titleRes)
+            text = designTitle(design)
             textSize = 13f
             gravity = Gravity.CENTER
             setPadding(0, (8 * d).toInt(), 0, 0)

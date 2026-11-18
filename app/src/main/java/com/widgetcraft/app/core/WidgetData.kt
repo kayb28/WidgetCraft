@@ -189,7 +189,7 @@ object WidgetStore {
         val out = mutableListOf<JSONObject>()
         for ((k, v) in p.all) {
             if (k.startsWith("lib_")) {
-                try { out.add(JSONObject(v)) } catch (_: Exception) { }
+                try { out.add(JSONObject(v.toString())) } catch (_: Exception) { }
             }
         }
         out.sortBy { it.optLong("created") }

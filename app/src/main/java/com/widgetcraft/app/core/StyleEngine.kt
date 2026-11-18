@@ -2,6 +2,7 @@ package com.widgetcraft.app.core
 
 import android.app.ActivityManager
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -14,7 +15,6 @@ import org.json.JSONObject
 import java.io.File
 import java.util.Calendar
 import java.util.Locale
-import kotlin.math.luminance
 
 /**
  * Resolución de colores (claro/oscuro automático con contraste garantizado),
@@ -60,8 +60,8 @@ object StyleEngine {
         if (chosen != null) return chosen
         // contraste respecto al fondo efectivo (puede ser translúcido sobre el launcher)
         val bg = background(style, night) and 0xFFFFFF
-        val l = ColorUtils.luminance(bg)
-        return if (l > 0.45f) autoText(false) else autoText(true)
+        val l = ColorUtils.calculateLuminance(bg)
+        return if (l > 0.45) autoText(false) else autoText(true)
     }
 
     fun accent(style: JSONObject): Int =
@@ -81,7 +81,7 @@ object StyleEngine {
         val bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bm)
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply { this.color = color }
-        val r = radiusPx.coerceAtMost(minOf(w, h) / 2f)
+        val r = radiusPx.toFloat().coerceAtMost(minOf(w, h) / 2f)
         canvas.drawRoundRect(RectF(0f, 0f, w.toFloat(), h.toFloat()), r, r, paint)
         return bm
     }
@@ -183,7 +183,7 @@ object StyleEngine {
     }
 
     fun batteryCharging(ctx: Context): Boolean {
-        val intent = ctx.registerReceiver(null, android.content.IntentFilter(BatteryManager.ACTION_BATTERY_CHANGED)) ?: return false
+        val intent = ctx.registerReceiver(null, android.content.IntentFilter(Intent.ACTION_BATTERY_CHANGED)) ?: return false
         val status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
         return status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL
     }

@@ -73,7 +73,7 @@ object WidgetRenderer {
             "date" -> renderDate(ctx, props, widthPx, heightPx, bg, radius, text, accent, scale, bold, widgetId)
             "battery" -> renderBattery(ctx, props, widthPx, heightPx, bg, radius, text, accent, scale, bold, widgetId)
             "counter" -> renderCounter(ctx, props, widthPx, heightPx, bg, radius, text, accent, scale, bold, widgetId)
-            "note" -> renderNote(ctx, props, widthPx, heightPx, bg, radius, text, scale, bold, widgetId)
+            "note" -> renderNote(ctx, props, widthPx, heightPx, bg, radius, text, accent, scale, bold, widgetId)
             "quote" -> renderQuote(ctx, props, widthPx, heightPx, bg, radius, text, accent, scale, bold, widgetId)
             "countdown" -> renderCountdown(ctx, props, widthPx, heightPx, bg, radius, text, accent, scale, bold, widgetId)
             "progress" -> renderProgress(ctx, props, widthPx, heightPx, bg, radius, text, accent, scale, bold, widgetId)

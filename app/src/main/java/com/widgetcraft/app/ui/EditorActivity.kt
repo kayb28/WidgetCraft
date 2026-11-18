@@ -80,7 +80,7 @@ class EditorActivity : AppCompatActivity() {
             else -> cfg = Designs.defaultConfig(intent.getStringExtra(EXTRA_DESIGN_ID) ?: Designs.all.first().id)
         }
 
-        val titles = Designs.all.map { getString(it.titleRes) }
+        val titles = Designs.all.map { designTitle(it) }
         designSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, titles)
         designSpinner.setSelection(Designs.all.indexOfFirst { it.id == cfg.optString("design") }.coerceAtLeast(0))
         designSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
@@ -90,7 +90,7 @@ class EditorActivity : AppCompatActivity() {
             override fun onNothingSelected(p: android.widget.AdapterView<*>?) {}
         }
 
-        findViewById<Button>(R.id.btn_save).setOnClickListener { saveAndFinish(false) }
+        findViewById<Button>(R.id.btn_save).setOnClickListener { saveAndFinish(-1) }
         findViewById<Button>(R.id.btn_apply).setOnClickListener { applyFlow() }
         findViewById<Button>(R.id.btn_pin).setOnClickListener { pinFlow() }
 
@@ -98,8 +98,13 @@ class EditorActivity : AppCompatActivity() {
         updatePreview()
     }
 
-    private fun switchDesign(designId: String) {
-        val style = cfg.optJSONObject("style") ?: JSONObject()
+    /** título legible de un diseño (titleRes es un nombre de recurso, no un id) */
+    private fun designTitle(design: Designs.Design): String {
+        val resId = resources.getIdentifier(design.titleRes, "string", packageName)
+        return if (resId != 0) getString(resId) else design.titleRes
+    }
+
+    private fun switchDesign(designId: String) {        val style = cfg.optJSONObject("style") ?: JSONObject()
         val newCfg = Designs.defaultConfig(designId)
         newCfg.put("id", cfg.optString("id", newCfg.optString("id")))
         newCfg.put("style", style)
@@ -268,7 +273,7 @@ object FormBuilder {
                 Designs.Type.DATETIME -> {
                     val btn = Button(activity).apply {
                         textSize = 13f
-                        allCaps = false
+                        isAllCaps = false
                         text = StyleEngine.formatDateTime(values.optLong(p.key, System.currentTimeMillis() + 7L * 24 * 60 * 60 * 1000))
                         setOnClickListener {
                             val cal = java.util.Calendar.getInstance().apply { timeInMillis = values.optLong(p.key, System.currentTimeMillis()) }
@@ -371,7 +376,7 @@ object FormBuilder {
         val col = LinearLayout(activity).apply { orientation = LinearLayout.VERTICAL }
         val info = TextView(activity).apply { textSize = 12f; alpha = 0.8f }
         val btn = Button(activity).apply {
-            textSize = 13f; allCaps = false; text = activity.getString(R.string.choose_app)
+            textSize = 13f; isAllCaps = false; text = activity.getString(R.string.choose_app)
         }
         fun refreshInfo() {
             val arr = values.optJSONArray(p.key) ?: JSONArray()
