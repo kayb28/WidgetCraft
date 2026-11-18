@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         applyTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        applySystemBarInsets(findViewById(android.R.id.content))
 
         findViewById<ImageView>(R.id.btn_settings).setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         }
         try {
             val rv = WidgetRenderer.render(this, cfg, (72 * d).toInt(), (48 * d).toInt(), -1)
-            previewHost.addView(rv.apply(this, previewHost))
+            previewHost.addView(rv.apply(applicationContext, previewHost))
         } catch (_: Exception) {
             val fallback = TextView(this).apply { text = "▦" ; textSize = 24f }
             previewHost.addView(fallback)

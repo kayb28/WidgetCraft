@@ -55,6 +55,7 @@ class EditorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editor)
+        applySystemBarInsets(findViewById(android.R.id.content))
         setTitle(R.string.editor_title)
 
         previewHost = findViewById(R.id.preview_host)
@@ -126,7 +127,10 @@ class EditorActivity : AppCompatActivity() {
         previewHost.removeAllViews()
         try {
             val rv = WidgetRenderer.render(this, cfg, w, h, -1)
-            previewHost.addView(rv.apply(this, previewHost))
+            // applicationContext, no this: el inflater de la Activity lleva la factoría
+            // AppCompat y infla ImageView como AppCompatImageView, que RemoteViews
+            // rechaza para setImageBitmap (ActionException reportada en v1.0.0).
+            previewHost.addView(rv.apply(applicationContext, previewHost))
         } catch (e: Exception) {
             previewHost.addView(TextView(this).apply { text = "error de preview: ${e.message}" })
         }

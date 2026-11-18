@@ -15,6 +15,7 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        applySystemBarInsets(findViewById(android.R.id.content))
         setTitle(R.string.settings_title)
 
         val group = findViewById<RadioGroup>(R.id.theme_group)

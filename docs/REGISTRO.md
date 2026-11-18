@@ -24,3 +24,11 @@ Registro cronológico de decisiones y trabajos. Convención: una entrada por tar
   - Estado: **v1.0.0 entregada y verificada**. CI verde en `main` y en el tag.
 
 - **03:30 UTC — Release `v1.0.0` publicado (tercera iteración).** El run del tag falló solo en el paso final: `HTTP 403 Resource not accessible by integration` — el `GITHUB_TOKEN` de un repo nuevo nace con permisos de solo lectura. Fix en el workflow: `permissions: contents: write` en el job. El Release se creó vía API y el APK quedó adjunto (`WidgetCraft-1.0.0-universal.apk`, 9.999.868 bytes, sha256 `90de9ccc13f0c7dd633750ed959bc648ff6df74a8bb89786cc0daa397640177b`). Los tags futuros ya crean su Release solos desde la CI. Estado: **v1.0.0 en Releases**, enlace: github.com/kayb28/WidgetCraft/releases/tag/v1.0.0.
+
+## 2026-11-18 (mismo día, tarde)
+
+- **20:45 UTC — v1.0.1 (versionCode 2): primer bug reportado por el usuario con captura.** Dos fallos visibles en el editor:
+  1. **Preview roto con `RemoteViews$ActionException`**: «androidx.appcompat.widget.AppCompatImageView can't use method with RemoteViews: setImageBitmap». Causa raíz: `RemoteViews.apply()` se llamaba con la Activity como contexto; su inflater lleva la factoría AppCompat y infla los `ImageView` de los layouts de widget como `AppCompatImageView`, clase que RemoteViews rechaza para acciones de reflexión (el `setImageViewBitmap` exige `android.widget.ImageView` exacta). Fix: aplicar con `applicationContext` (inflater sin factoría) en el preview del editor y en los mini-previews de la biblioteca. Nota: el widget real en el launcher no pasa por este inflater, por eso solo se rompía dentro de la app. Documentado con comentario en `EditorActivity.updatePreview`.
+  2. **La status bar tapaba los botones y la barra de gestos el final del formulario**: con targetSdk 35, Android 15 fuerza edge-to-edge. Fix: helper `ui/Insets.kt` (`applySystemBarInsets`) aplicado a `android.R.id.content` en las tres activities (barras del sistema + teclado; en dispositivos sin edge-to-edge los insets llegan consumidos y no duplica padding).
+  - Publicación: `v1.0.1` (versionCode 2), tag pusheado → esta vez el Release debe crearse solo desde la CI con el fix de permisos, lo que valida el flujo completo de releases automáticos.
+  - Estado: build en CI pendiente de verificarse verde y Release automático pendiente de confirmarse.
